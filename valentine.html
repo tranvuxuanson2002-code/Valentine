@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Message for the prettiest princess in the universe</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+
+    background: url("background.jpg") no-repeat center center fixed;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#container {
+  margin-top: 120px;
+}
+
+h1 {
+  color: #ff6699;
+  font-size: 40px;
+}
+.honey-text {
+        color: #ffd966;
+        font-weight: bold;
+        text-shadow: 0 0 8px rgba(255, 217, 102, 0.8);
+}
+input {
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: 2px solid #ffb347;
+  text-align: center;
+}
+
+button {
+  padding: 10px 25px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: none;
+  background-color: #ffb347;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#message {
+  margin-top: 40px;
+  font-size: 24px;
+  color: #ff4d6d;
+  white-space: pre-line;
+}
+
+.heart {
+  position: fixed;
+  font-size: 25px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+<h1>🍯 Message for the prettiest princess in the universe 🍯</h1>
+<p class="honey-text">Enter the secret honey code 💛</p><input type="password" id="code">
+<br>
+<button onclick="checkCode()">Unlock</button>
+<div id="message"></div>
+</div>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function checkCode() {
+  const secret = "221101"; // CHANGE THIS
+  const input = document.getElementById("code").value;
+  const message = document.getElementById("message");
+  const music = document.getElementById("music");
+
+  if(input === secret) {
+    music.volume = 0.4;
+music.play().catch(() => {});
+    document.body.style.background = "linear-gradient(#ffdde1,#ee9ca7)";
+    typewriter("Damn... \n\nI think I found something sweeter than honey...\n\nIt's wwniee_the_pooh. 🍯🐻\n\nI hope you will forever stay beautiful, happy, and true to who you are. And no matter where life takes you, I’ll always be ready to walk this journey with you, anytime.💛💛💛");
+    startHearts();
+  } else {
+    message.innerText = "Hmm... that doesn't taste like honey 🍯";
+  }
+}
+
+function typewriter(text) {
+  const element = document.getElementById("message");
+  element.innerHTML = "";
+  let i = 0;
+
+  function typing() {
+    if (i < text.length) {
+      if (text.charAt(i) === "\n") {
+        element.innerHTML += "<br>";
+      } else {
+        element.innerHTML += text.charAt(i);
+      }
+      i++;
+      setTimeout(typing, 40);
+    }
+  }
+
+  typing();
+}function startHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💛";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 300);
+}
+
+</script>
+
+</body>
+</html>
